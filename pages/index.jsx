@@ -70,12 +70,12 @@ const index = ({ weather }) => {
     },[weatherData])
 
     return (
-        <div className=" w-screen p-2 grid grid-cols-1 auto-rows-auto last:mb-16">
+        <div className=" w-full p-2 grid grid-cols-1 auto-rows-auto last:mb-16">
             <Location weather={weatherData} celcius={celcius} handleSetSearchedLocation={setSearchedLocation} handleUnit={handleUnit} />
             <div className="flex justify-start items-center gap-2 mt-2">
-                <button className="rounded-lg bg-white/30 text-white font-normal text-md text-center px-4 py-1 md:text-xl" onClick={() => {setDayIndex(0)}}>Today</button>
-                <button className="rounded-lg bg-white/30 text-white font-normal text-md text-center px-4 py-1 md:text-xl" onClick={() => {setDayIndex(1)}}>Tomorrow</button>
-                <button className="rounded-lg bg-white/30 text-white font-normal text-md text-center px-4 py-1 md:text-xl" onClick={() => {setDayIndex(2)}}>Next Day</button>
+                <button className="rounded-lg bg-white/30 text-white font-normal text-md text-center px-4 py-1 md:text-xl md:font-light" onClick={() => {setDayIndex(0)}}>Today</button>
+                <button className="rounded-lg bg-white/30 text-white font-normal text-md text-center px-4 py-1 md:text-xl md:font-light" onClick={() => {setDayIndex(1)}}>Tomorrow</button>
+                <button className="rounded-lg bg-white/30 text-white font-normal text-md text-center px-4 py-1 md:text-xl md:font-light" onClick={() => {setDayIndex(2)}}>Next Day</button>
             </div>
             {dayIndex === 0 && <TempDisplay weather={weatherData} celcius={celcius} weatherImg={weatherImg} />}
             {dayIndex !== 0 && <DayForecast weather={weatherData} celcius={celcius} dayIndex={dayIndex} />}
@@ -97,7 +97,7 @@ const index = ({ weather }) => {
             </div>
             <form onSubmit={handleSubmit} className=' fixed bottom-0 left-0 w-full flex justify-center items-center p-2'>
                 <input type="text" value={submitValue} placeholder='Enter city, zip or postal code.' className="bg-white text-center text-text-Sec w-full max-w-xl h-12 rounded-l-xl outline-none" onChange={handleChange}/>
-                <button type="submit" value='submit' className="w-2/12 h-12 bg-bgPrim text-white uppercase 2xl font-bold rounded-r-xl">sub</button>
+                <button type="submit" value='submit' className="w-2/12 max-w-[8rem] h-12 bg-bgPrim text-white uppercase 2xl font-bold rounded-r-xl">sub</button>
             </form>
             {dayIndex === 0 &&<Section data={[{name:'Wind kph', value:weatherData.current.wind_kph},{name:'Wind mph', value:weatherData.current.wind_mph},{name:'Wind direction', value:weatherData.current.wind_dir}]} title={'Wind'}  />}
             <Section data={[
