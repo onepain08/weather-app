@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { useState } from "react";
 import { TbTemperaturePlus, TbTemperatureMinus } from'react-icons/tb'
 import { BsCloudRainHeavyFill, BsSnow } from'react-icons/bs'
 import Image from "next/image";
