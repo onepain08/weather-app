@@ -15,7 +15,7 @@ const index = ({ weather }) => {
     const [celcius, setCelcius] = useState(true)
     const [weatherData, setWeatherData] = useState(weather)
     const [submitValue, setSubmitValue] = useState('')
-    const [searchedLocation, setSearchedLocation] = useState('mexico')
+    const [searchedLocation, setSearchedLocation] = useState('London')
     const [dayIndex, setDayIndex] = useState(0)
     const [weatherImg, setWeatherImg] = useState(weatherData.forecast.forecastday[0].day.condition.icon)
     
@@ -73,9 +73,9 @@ const index = ({ weather }) => {
         <div className=" w-full p-2 grid grid-cols-1 auto-rows-auto last:mb-16">
             <Location weather={weatherData} celcius={celcius} handleSetSearchedLocation={setSearchedLocation} handleUnit={handleUnit} />
             <div className="flex justify-start items-center gap-2 mt-2">
-                <button className="rounded-lg bg-white/30 text-white font-normal text-md text-center px-4 py-1 md:text-xl md:font-light" onClick={() => {setDayIndex(0)}}>Today</button>
-                <button className="rounded-lg bg-white/30 text-white font-normal text-md text-center px-4 py-1 md:text-xl md:font-light" onClick={() => {setDayIndex(1)}}>Tomorrow</button>
-                <button className="rounded-lg bg-white/30 text-white font-normal text-md text-center px-4 py-1 md:text-xl md:font-light" onClick={() => {setDayIndex(2)}}>Next Day</button>
+                <button className={"rounded-lg bg-white/30 text-white font-normal text-md text-center px-4 py-1 md:text-xl md:font-light " + (dayIndex === 0? " bg-teal-300" : "")} onClick={() => {setDayIndex(0)}}>Today</button>
+                <button className={"rounded-lg bg-white/30 text-white font-normal text-md text-center px-4 py-1 md:text-xl md:font-light " + (dayIndex === 1? " bg-teal-300" : "")} onClick={() => {setDayIndex(1)}}>Tomorrow</button>
+                <button className={"rounded-lg bg-white/30 text-white font-normal text-md text-center px-4 py-1 md:text-xl md:font-light " + (dayIndex === 2? " bg-teal-300" : "")} onClick={() => {setDayIndex(2)}}>Next Day</button>
             </div>
             {dayIndex === 0 && <TempDisplay weather={weatherData} celcius={celcius} weatherImg={weatherImg} />}
             {dayIndex !== 0 && <DayForecast weather={weatherData} celcius={celcius} dayIndex={dayIndex} />}
@@ -116,7 +116,7 @@ const index = ({ weather }) => {
 
 export const getServerSideProps = async (ctx) => {
 
-    const res = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=${process.env.NEXT_PUBLIC_API_KEY}&q=Mexico&days=3`)
+    const res = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=${process.env.NEXT_PUBLIC_API_KEY}&q=London&days=3`)
     const data = await res.json()
 
     return {
