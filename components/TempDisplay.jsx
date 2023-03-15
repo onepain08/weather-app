@@ -34,10 +34,10 @@ const TempDisplay = (props) => {
     },[props.weather])
 
 
-
+    console.log(props.weather);
     return (
         <div className="w-full my-8 max-w-lg mx-auto">
-            <div className="flex items-center text-white text-xl font-light gap-6 mt-4 mb-6">
+            <div className="flex items-center text-white text-xl font-light gap-6 mb-6">
                 <div className="flex items-center gap-2">
                     <TbTemperaturePlus className=" w-full" />
                     <h2> {props.celcius === true? props.weather.forecast.forecastday[0].day.maxtemp_c : props.weather.forecast.forecastday[0].day.maxtemp_f }{props.celcius ? '°C' : '°F'}</h2>
